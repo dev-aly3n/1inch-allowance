@@ -62,6 +62,9 @@ importers:
       clsx:
         specifier: ^2.0.0
         version: 2.1.1
+      cryptocurrency-icons:
+        specifier: ^0.18.1
+        version: 0.18.1
       framer-motion:
         specifier: ^10.16.16
         version: 10.18.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2805,6 +2808,9 @@ packages:
   crypto-random-string@2.0.0:
     resolution: {integrity: sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==}
     engines: {node: '>=8'}
+
+  cryptocurrency-icons@0.18.1:
+    resolution: {integrity: sha512-dvR5O8JOmav3559Yb0Igpkia+3vpt/aeNvMu5ZIVUG2Bzpq9wNcOJRIQas49XJrPjtZ98GAEn3aDQO+w7uhS2w==}
 
   cspell-dictionary@6.31.3:
     resolution: {integrity: sha512-3w5P3Md/tbHLVGPKVL0ePl1ObmNwhdDiEuZ2TXfm2oAIwg4aqeIrw42A2qmhaKLcuAIywpqGZsrGg8TviNNhig==}
@@ -9611,6 +9617,8 @@ snapshots:
   crossws@0.2.4: {}
 
   crypto-random-string@2.0.0: {}
+
+  cryptocurrency-icons@0.18.1: {}
 
   cspell-dictionary@6.31.3:
     dependencies:
