@@ -9,6 +9,8 @@ import React from "react";
 
 import { Asset } from "@/types";
 
+import TokenIcon from "../TokenIcon";
+
 interface CoinTableProps {
   tokens: Asset[];
 }
@@ -30,11 +32,14 @@ const CoinTable = ({ tokens }: CoinTableProps) => {
               key={token.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                {token.name}
+              {/* <TableCell>
+                <div className="flex gap-2 items-center h-full">
+                  <TokenIcon name={token.name} />
+                  <span>{token.name}</span>
+                </div>
               </TableCell>
-              <TableCell align="right">{token.iconName}</TableCell>
-              <TableCell align="right">{token.allowance}</TableCell>
+              <TableCell>{token.balance/token.decimals}</TableCell>
+              <TableCell>{token.allowance}</TableCell> */}
             </TableRow>
           ))}
         </TableBody>
