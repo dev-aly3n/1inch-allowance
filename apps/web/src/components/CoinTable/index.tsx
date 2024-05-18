@@ -8,6 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import React from "react";
+import { useAccount } from "wagmi";
 
 import { assets } from "@/constants/assets";
 import { useAllowanceAndBalance } from "@/hooks/useAllowanceAndBalance";
@@ -23,6 +24,8 @@ const CoinTable = () => {
   } = useAllowanceAndBalance();
   const isLoading = isDataLoading || isPending;
   const tokensWithAllowanceAndBalance = data || assets;
+
+  const { isConnected } = useAccount();
 
   return (
     <TableContainer component={Paper} style={{ maxHeight: 432 }}>
@@ -47,14 +50,22 @@ const CoinTable = () => {
                 </div>
               </TableCell>
               <TableCell>
-                <Skel width={"50%"} isLoading={isLoading}>
-                  {token.balance}
-                </Skel>
+                {isConnected ? (
+                  <Skel width={"50%"} isLoading={isLoading}>
+                    {token.balance}
+                  </Skel>
+                ) : (
+                  "-"
+                )}
               </TableCell>
               <TableCell>
-                <Skel width={"50%"} isLoading={isLoading}>
-                  {token.allowance}
-                </Skel>
+                {isConnected ? (
+                  <Skel width={"50%"} isLoading={isLoading}>
+                    {token.allowance}
+                  </Skel>
+                ) : (
+                  "-"
+                )}
               </TableCell>
             </TableRow>
           ))}
