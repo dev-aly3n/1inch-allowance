@@ -37,7 +37,7 @@ export const useAllowanceAndBalance = () => {
     functionName: "balanceOf",
     args: [userAddress],
   }));
-  const { data: tokensWithAllowanceAndBalance, isLoading } = useQuery({
+  return useQuery({
     queryKey: ["allowances", userAddress || ""],
     queryFn: () =>
       fetchAllowancesAndBalances(
@@ -46,9 +46,4 @@ export const useAllowanceAndBalance = () => {
       ),
     enabled: isConnected,
   });
-
-  return {
-    tokensWithAllowanceAndBalance: tokensWithAllowanceAndBalance || assets,
-    isLoading,
-  };
 };
