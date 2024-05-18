@@ -1,8 +1,16 @@
+"use client";
+
+import { useAccount } from "wagmi";
+
 import CheckeredBackground from "@/components/CheckeredBackground";
 import CoinTable from "@/components/CoinTable";
 import WalletConnectButton from "@/components/WalletConnectButton";
+import { useAllowance } from "@/hooks/useAllowance";
 
 export default function Page() {
+  const { tokensWithAllowance, isLoading } = useAllowance();
+
+  console.log("kkk", tokensWithAllowance);
   return (
     <div className="w-screen h-screen flex justify-center items-center relative">
       <CheckeredBackground />
@@ -12,7 +20,7 @@ export default function Page() {
           <WalletConnectButton />
         </div>
         <div className="w-full h-full">
-          <CoinTable />
+          {tokensWithAllowance && <CoinTable tokens={tokensWithAllowance} />}
         </div>
       </div>
     </div>
