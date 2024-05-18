@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import { WagmiProvider as Provider } from "wagmi";
 
 import { wagmiConfig } from "@/config/wagmi";

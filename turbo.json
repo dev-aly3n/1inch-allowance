@@ -10,7 +10,8 @@
         ".env.local",
         ".env.development",
         ".env"
-      ]
+      ],
+      "env": ["NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID"]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -23,7 +24,8 @@
         ".env.local",
         ".env.development",
         ".env"
-      ]
+      ],
+      "env": ["NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID"]
     },
     "start": {
       "cache": false,
@@ -33,7 +35,8 @@
         ".env.local",
         ".env.development",
         ".env"
-      ]
+      ],
+      "env": ["NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID"]
     },
 
     "format": {},
