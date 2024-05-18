@@ -36,7 +36,7 @@ const CoinTable = ({ tokens, isLoading }: CoinTableProps) => {
             >
               <TableCell>
                 <div className="flex gap-2 items-center h-full">
-                  <TokenIcon name={token.name} />
+                  <TokenIcon name={token.iconName} />
                   <span>{token.name}</span>
                 </div>
               </TableCell>
