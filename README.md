@@ -6,18 +6,19 @@
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-## Packages
+## Dependancies
 
-Run the following command to install required packages.
+Run the following commands to install required packages.
 
 ```bash
 pnpm install turbo --global
 pnpm install
 ```
+By running `pnpm install`, it automatically installs the Husky pre-commit Git hook to lint and check the types before accepting each commit.
 
 ## Frontend
 
-Next.js `./apps/web` application with TypeScript, Shadcn-UI, and WAGMI.
+Next.js `./apps/web` application with TypeScript, Tailwindcss, MUI and WAGMI.
 
 ### Utilities
 
@@ -28,6 +29,7 @@ Next.js `./apps/web` application with TypeScript, Shadcn-UI, and WAGMI.
 ### Environment variables
 
 Copy environment variable examples, create .env and .env.local files, and replace values.
+(Here, we have an `.env.local.example` file in the `app/web` directory that we need to add a `.env.local` file with the same values as in the example. I have included these values in the example for the sake of this task.)
 
 ### Build
 
