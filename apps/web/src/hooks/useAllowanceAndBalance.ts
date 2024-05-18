@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { multicall } from "@wagmi/core";
-import { erc20Abi } from "viem";
+import { erc20Abi, formatUnits } from "viem";
 import { useAccount } from "wagmi";
 
 import { wagmiConfig } from "@/config/wagmi";
 import { assets } from "@/constants/assets";
 import { oneInchContractAddress } from "@/constants/contracts";
+import { fixPrecision } from "@/utils";
 
 // the actual type of the wagmi multical is any
 const fetchAllowancesAndBalances = async (
@@ -16,11 +17,20 @@ const fetchAllowancesAndBalances = async (
     contracts: [...tokenAllowanceContracts, ...tokenBalanceContracts],
   });
 
-  return assets.map((token, index) => ({
-    ...token,
-    allowance: (data[index]?.result as bigint) / BigInt(token.decimals),
-    balance: (data[index * 2]?.result as bigint) / BigInt(token.decimals),
-  }));
+  return assets.map((token, index) => {
+    let allowance = formatUnits(data[index]?.result as bigint, token.decimals);
+    allowance = fixPrecision(Number(allowance), 4).toString();
+    let balance = formatUnits(
+      data[index * 2]?.result as bigint,
+      token.decimals
+    );
+    balance = fixPrecision(Number(balance), 4).toString();
+    return {
+      ...token,
+      allowance,
+      balance,
+    };
+  });
 };
 
 export const useAllowanceAndBalance = () => {

@@ -48,12 +48,12 @@ const CoinTable = () => {
               </TableCell>
               <TableCell>
                 <Skel width={"50%"} isLoading={isLoading}>
-                  {token.balance?.toString()}
+                  {token.balance}
                 </Skel>
               </TableCell>
               <TableCell>
                 <Skel width={"50%"} isLoading={isLoading}>
-                  {token.allowance?.toString()}
+                  {token.allowance}
                 </Skel>
               </TableCell>
             </TableRow>
