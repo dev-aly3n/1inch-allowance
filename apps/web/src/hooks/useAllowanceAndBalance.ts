@@ -18,8 +18,8 @@ const fetchAllowancesAndBalances = async (
 
   return assets.map((token, index) => ({
     ...token,
-    allowance: data[index]?.result as number,
-    balance: data[index * 2]?.result as number,
+    allowance: (data[index]?.result as bigint) / BigInt(token.decimals),
+    balance: (data[index * 2]?.result as bigint) / BigInt(token.decimals),
   }));
 };
 
@@ -48,7 +48,7 @@ export const useAllowanceAndBalance = () => {
   });
 
   return {
-    tokensWithAllowanceAndBalance,
+    tokensWithAllowanceAndBalance: tokensWithAllowanceAndBalance || assets,
     isLoading,
   };
 };

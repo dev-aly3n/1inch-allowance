@@ -1,7 +1,5 @@
 "use client";
 
-import { useAccount } from "wagmi";
-
 import CheckeredBackground from "@/components/CheckeredBackground";
 import CoinTable from "@/components/CoinTable";
 import WalletConnectButton from "@/components/WalletConnectButton";
@@ -20,9 +18,10 @@ export default function Page() {
           <WalletConnectButton />
         </div>
         <div className="w-full h-full">
-          {tokensWithAllowanceAndBalance && (
-            <CoinTable tokens={tokensWithAllowanceAndBalance} />
-          )}
+          <CoinTable
+            tokens={tokensWithAllowanceAndBalance}
+            isLoading={isLoading}
+          />
         </div>
       </div>
     </div>

@@ -7,6 +7,6 @@ export type Asset = {
   description: string;
   decimals: number;
   address: Address;
-  allowance?: number;
-  balance?: number;
+  allowance?: bigint;
+  balance?: bigint;
 };

@@ -5,18 +5,21 @@ import theme from "@/config/theme";
 
 import RainbowProvider from "./RainbowProvider";
 import ReactQueryProvider from "./ReactQueryProvider";
+import SkeletonTheme from "./SkeletonTheme";
 import WagmiProvider from "./WagmiProvider";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <WagmiProvider>
-      <ReactQueryProvider>
-        <RainbowProvider>
-          <AppRouterCacheProvider>
-            <ThemeProvider theme={theme}>{children}</ThemeProvider>
-          </AppRouterCacheProvider>
-        </RainbowProvider>
-      </ReactQueryProvider>
-    </WagmiProvider>
+    <SkeletonTheme>
+      <WagmiProvider>
+        <ReactQueryProvider>
+          <RainbowProvider>
+            <AppRouterCacheProvider>
+              <ThemeProvider theme={theme}>{children}</ThemeProvider>
+            </AppRouterCacheProvider>
+          </RainbowProvider>
+        </ReactQueryProvider>
+      </WagmiProvider>
+    </SkeletonTheme>
   );
 }

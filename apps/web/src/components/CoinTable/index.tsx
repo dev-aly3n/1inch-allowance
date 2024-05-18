@@ -9,13 +9,15 @@ import React from "react";
 
 import { Asset } from "@/types";
 
+import Skel from "../Skel";
 import TokenIcon from "../TokenIcon";
 
 interface CoinTableProps {
   tokens: Asset[];
+  isLoading: boolean;
 }
 
-const CoinTable = ({ tokens }: CoinTableProps) => {
+const CoinTable = ({ tokens, isLoading }: CoinTableProps) => {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 500 }}>
@@ -32,14 +34,22 @@ const CoinTable = ({ tokens }: CoinTableProps) => {
               key={token.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              {/* <TableCell>
+              <TableCell>
                 <div className="flex gap-2 items-center h-full">
                   <TokenIcon name={token.name} />
                   <span>{token.name}</span>
                 </div>
               </TableCell>
-              <TableCell>{token.balance/token.decimals}</TableCell>
-              <TableCell>{token.allowance}</TableCell> */}
+              <TableCell>
+                <Skel width={"50%"} isLoading={true}>
+                  {token.balance?.toString()}
+                </Skel>
+              </TableCell>
+              <TableCell>
+                <Skel width={"50%"} isLoading={true}>
+                  {token.allowance?.toString()}
+                </Skel>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

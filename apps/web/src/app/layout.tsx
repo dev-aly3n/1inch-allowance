@@ -1,5 +1,6 @@
 import "@rainbow-me/rainbowkit/styles.css";
 import { Metadata } from "next";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import { fonts } from "@/assets/fonts";
 import { Providers } from "@/providers";
