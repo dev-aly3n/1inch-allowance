@@ -6,11 +6,13 @@ export const framerProps = {
   exit: "out",
 };
 
-export const fadeInAnimation: Variants = {
+export const fadeUpAnimation: Variants = {
   hidden: {
     opacity: 0,
+    y: 50,
   },
   visible: {
     opacity: 1,
+    y: 0,
   },
 };
