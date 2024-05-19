@@ -1,4 +1,4 @@
-# 1inch allowance
+# 1inch allowance - [LIVE version](https://1inch-allowance.vercel.app/)
 
 ### Apps and Packages
 
