@@ -21,7 +21,7 @@ const fetchAllowancesAndBalances = async (
     let allowance = formatUnits(data[index]?.result as bigint, token.decimals);
     allowance = fixPrecision(Number(allowance), 4).toString();
     let balance = formatUnits(
-      data[index * 2]?.result as bigint,
+      data[index + assets.length]?.result as bigint,
       token.decimals
     );
     balance = fixPrecision(Number(balance), 4).toString();

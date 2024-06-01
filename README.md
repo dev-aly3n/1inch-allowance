@@ -14,6 +14,7 @@ Run the following commands to install required packages.
 pnpm install turbo --global
 pnpm install
 ```
+
 By running `pnpm install`, it automatically installs the Husky pre-commit Git hook to lint and check the types before accepting each commit.
 
 ## Frontend
