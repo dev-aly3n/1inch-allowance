@@ -6,7 +6,7 @@ import { useAccount } from "wagmi";
 import { wagmiConfig } from "@/config/wagmi";
 import { assets } from "@/constants/assets";
 import { oneInchContractAddress } from "@/constants/contracts";
-import { fixPrecision } from "@/utils";
+import { formatBigNumbers } from "@/utils";
 
 // the actual type of the wagmi multical is any
 const fetchAllowancesAndBalances = async (
@@ -18,13 +18,16 @@ const fetchAllowancesAndBalances = async (
   });
 
   return assets.map((token, index) => {
-    let allowance = formatUnits(data[index]?.result as bigint, token.decimals);
-    allowance = fixPrecision(Number(allowance), 4).toString();
-    let balance = formatUnits(
+    const allowance = formatBigNumbers(
+      data[index]?.result as bigint,
+      token.decimals
+    );
+
+    const balance = formatBigNumbers(
       data[index + assets.length]?.result as bigint,
       token.decimals
     );
-    balance = fixPrecision(Number(balance), 4).toString();
+
     return {
       ...token,
       allowance,

@@ -8,6 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import React from "react";
+import ReactHtmlParser from "react-html-parser";
 import { useAccount } from "wagmi";
 
 import { assets } from "@/constants/assets";
@@ -37,7 +38,7 @@ const CoinTable = () => {
             <TableCell>Allowance</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody className="!overflow-y-scroll">
+        <TableBody className="!overflow-y-scroll whitespace-nowrap">
           {tokensWithAllowanceAndBalance.map((token) => (
             <TableRow
               key={token.name}
@@ -50,22 +51,14 @@ const CoinTable = () => {
                 </div>
               </TableCell>
               <TableCell>
-                {isConnected ? (
-                  <Skel width={"50%"} isLoading={isLoading}>
-                    {token.balance}
-                  </Skel>
-                ) : (
-                  "-"
-                )}
+                <Skel width={"50%"} isLoading={isLoading}>
+                  {isConnected ? ReactHtmlParser(token.balance || "") : "-"}
+                </Skel>
               </TableCell>
               <TableCell>
-                {isConnected ? (
-                  <Skel width={"50%"} isLoading={isLoading}>
-                    {token.allowance}
-                  </Skel>
-                ) : (
-                  "-"
-                )}
+                <Skel width={"50%"} isLoading={isLoading}>
+                  {isConnected ? ReactHtmlParser(token.allowance || "") : "-"}
+                </Skel>
               </TableCell>
             </TableRow>
           ))}
